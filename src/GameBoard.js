@@ -15,12 +15,13 @@ const GameBoard = (s) => {
 
     shipsCoords.forEach((cell) => {
       valid = isValidCoord(cell.coords) ? valid : false;
-      if (shipInCell(cell.coords).boolean) valid = false;
+      if (shipInCell(cell.coords, ship).boolean) valid = false;
     });
 
     if (valid) {
+      cells = cells.filter((el) => el.value !== ship);
       cells.push.apply(cells, shipsCoords);
-      ships.push(ship);
+      if (ships.filter((el) => el === ship) == undefined) ships.push(ship);
     }
     return valid;
   };
@@ -38,7 +39,8 @@ const GameBoard = (s) => {
     return coord.y >= 0;
   };
 
-  const shipInCell = (coord) => {
+  const shipInCell = (coord, ignore) => {
+    cells = cells.filter((el) => el.value !== ignore);
     const ship = cells.find((cell) => cell.coords.x == coord.x && cell.coords.y == coord.y);
 
     return { boolean: ship != undefined, ship: ship };
@@ -52,7 +54,29 @@ const GameBoard = (s) => {
     return fleetSunk;
   };
 
-  return { placeShip, isFleetSunk, shoot };
+  const getSize = () => {
+    return size;
+  };
+
+  const getRandomizedBoard = (ships) => {
+    let dataOut = [];
+    ships.forEach((ship) => {
+      while (true) {
+        const origin = {
+          x: Math.round(Math.random() * getSize()),
+          y: Math.round(Math.random() * getSize()),
+        };
+        const rotation = Math.round(Math.random()) == 0 ? 'vert' : 'hori';
+        if (!placeShip(ship, origin, rotation)) continue;
+        dataOut.push({ ship, origin, rotation });
+        break;
+      }
+    });
+
+    return dataOut;
+  };
+
+  return { placeShip, isFleetSunk, shoot, getSize, getRandomizedBoard };
 };
 
 module.exports = GameBoard;

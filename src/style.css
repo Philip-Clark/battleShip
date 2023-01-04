@@ -1,10 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
+
+:root {
+  --black: #262626;
+  --tan: #d6c1a1;
+}
+
 body,
 html {
   margin: 0;
   padding: 0;
 }
 
+* {
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+}
+
 body {
-  background: #2b2d32;
-  color: #bdbdbd;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(#4f8e9285, #4f8d9285), url('./assets/images/background.jpg');
+  background-size: 25%;
+  background-repeat: repeat;
+  color: #262626;
+  text-align: center;
+}
+main {
+  height: 100%;
+}
+
+#startScreen {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 400ch;
+}
+
+#overlay {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('./assets/images/overlay.png');
+  opacity: 40%;
+  background-size: 25%;
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+#logo {
+  font-size: min(12vw, 16ch);
+  margin: 0;
+  color: var(--black);
+  line-height: 12vw;
+  text-overflow: clip;
+  width: 100%;
+  text-align: center;
+}
+.ship {
+  transform-origin: top left;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+#setup {
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  opacity: 0;
+  margin: auto;
+  width: 100vw;
+}
+.gameBoard {
+  margin: auto;
+  max-width: 600px;
+  margin-top: 5vw;
+}
+
+#startForm {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#skewedComponent:has(#nameInput) {
+  margin: 0 auto;
+}
+
+#nameInput {
+  font-size: 2em;
+  color: var(--tan);
+  background: transparent;
+  border: none;
+  cursor: text;
+  width: 12ch;
+  text-align: center;
+}
+
+#startButton {
+  margin: 1em auto;
+  background: transparent;
+  padding: 0.3em 2em;
+  font-size: 3em;
+  color: var(--black);
+  border: none;
+  transition: opacity 0.01s ease, transform 0.01s linear;
+}
+
+#startButton:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+#startButton:active {
+  opacity: 1;
+  transform: scale(0.95);
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  95% {
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
 }

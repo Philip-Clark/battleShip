@@ -9,7 +9,6 @@
     "watch": "webpack --watch",
     "serve": "webpack serve",
     "test": "jest"
-
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
@@ -26,7 +25,11 @@
     "webpack-dev-server": "^4.11.1",
     "workbox-webpack-plugin": "^6.5.4"
   },
-    "jest": {
-      "testEnvironment": "node"
-    }
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "dependencies": {
+    "interactjs": "^1.10.17",
+    "nanoid": "^4.0.0"
+  }
 }

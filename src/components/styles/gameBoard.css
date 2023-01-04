@@ -1,0 +1,26 @@
+.gameBoard {
+  --size: 10;
+  display: grid;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* 1/1 */
+  border: solid 2px var(--tan);
+  grid-template-columns: repeat(var(--size), 1fr);
+}
+
+.cell {
+  border: solid 1px var(--tan);
+  position: relative;
+}
+
+.cell[type='hit'] {
+  background-color: red;
+}
+.cell[type='miss'] {
+  background-color: green;
+}
+.cell:hover {
+  background-color: grey;
+}
+.cell:active {
+  background-color: black;
+}
