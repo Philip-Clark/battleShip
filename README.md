@@ -3,6 +3,8 @@
 Built to practice TDD.
 
 
+## UPDATE: This project has been "archived". Test Driven Development was learned, and I simply did not want to spend 4 weeks building out the dreamed UI.
+
 
 [This codepen](https://codepen.io/BiffCodes/pen/jOpWLoz) demonstrates what the shooting could feel like.
 
